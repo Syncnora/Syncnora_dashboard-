@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=EB+Garamond:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Syncnora — Premium AI Dashboard Design System
+   Olive green primary, warm orange accent, soft cream secondary
+   All colors in HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 40 33% 99%;
+    --foreground: 80 25% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 80 25% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 80 25% 12%;
+
+    /* Olive green #6B850C */
+    --primary: 73 83% 28%;
+    --primary-foreground: 40 60% 97%;
+    --primary-glow: 73 70% 45%;
+
+    /* Soft cream #FCDB91 */
+    --secondary: 41 95% 78%;
+    --secondary-foreground: 80 30% 18%;
+
+    --muted: 45 30% 96%;
+    --muted-foreground: 80 10% 42%;
+
+    /* Warm orange #FDA600 */
+    --accent: 39 100% 50%;
+    --accent-foreground: 0 0% 100%;
+    --accent-soft: 39 100% 95%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 60% 42%;
+    --warning: 39 100% 50%;
+
+    --border: 45 25% 91%;
+    --input: 45 25% 91%;
+    --ring: 73 83% 28%;
+
+    --radius: 1rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(73 83% 28%) 0%, hsl(39 100% 50%) 100%);
+    --gradient-soft: linear-gradient(135deg, hsl(73 60% 95%) 0%, hsl(39 100% 96%) 100%);
+    --gradient-cream: linear-gradient(135deg, hsl(41 95% 88%) 0%, hsl(39 100% 92%) 100%);
+    --gradient-glow: radial-gradient(circle at 20% 20%, hsl(73 70% 60% / 0.15), transparent 50%),
+                     radial-gradient(circle at 80% 80%, hsl(39 100% 60% / 0.15), transparent 50%);
+    --gradient-border: linear-gradient(135deg, hsl(73 83% 28% / 0.3), hsl(39 100% 50% / 0.3));
+
+    /* Shadows */
+    --shadow-soft: 0 2px 8px -2px hsl(73 30% 20% / 0.06), 0 4px 16px -4px hsl(73 30% 20% / 0.04);
+    --shadow-card: 0 4px 20px -4px hsl(73 40% 20% / 0.08), 0 8px 32px -8px hsl(39 80% 40% / 0.06);
+    --shadow-glow: 0 0 40px hsl(73 70% 50% / 0.25);
+    --shadow-accent-glow: 0 0 30px hsl(39 100% 55% / 0.35);
+    --shadow-elegant: 0 20px 50px -20px hsl(73 50% 20% / 0.18);
+
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* Dark navigation chrome (sidebar + topbar) */
+    --sidebar-background: 80 18% 9%;
+    --sidebar-foreground: 40 25% 88%;
+    --sidebar-primary: 73 70% 55%;
+    --sidebar-primary-foreground: 80 25% 8%;
+    --sidebar-accent: 80 14% 14%;
+    --sidebar-accent-foreground: 40 30% 95%;
+    --sidebar-border: 80 12% 16%;
+    --sidebar-ring: 73 70% 55%;
+
+    --topbar-background: 80 18% 9%;
+    --topbar-foreground: 40 25% 88%;
+    --topbar-border: 80 12% 16%;
+    --topbar-muted: 80 12% 18%;
+    --topbar-muted-foreground: 40 15% 65%;
+  }
+
+  .dark {
+    --background: 80 15% 7%;
+    --foreground: 40 30% 95%;
+    --card: 80 15% 10%;
+    --card-foreground: 40 30% 95%;
+    --popover: 80 15% 10%;
+    --popover-foreground: 40 30% 95%;
+    --primary: 73 60% 50%;
+    --primary-foreground: 80 25% 8%;
+    --primary-glow: 73 70% 60%;
+    --secondary: 41 50% 30%;
+    --secondary-foreground: 40 30% 95%;
+    --muted: 80 12% 15%;
+    --muted-foreground: 40 15% 65%;
+    --accent: 39 100% 55%;
+    --accent-foreground: 80 25% 8%;
+    --accent-soft: 39 50% 18%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 40 30% 95%;
+    --border: 80 12% 18%;
+    --input: 80 12% 18%;
+    --ring: 73 60% 50%;
+    --sidebar-background: 80 15% 9%;
+    --sidebar-foreground: 40 25% 85%;
+    --sidebar-primary: 73 60% 50%;
+    --sidebar-primary-foreground: 80 25% 8%;
+    --sidebar-accent: 80 12% 15%;
+    --sidebar-accent-foreground: 73 60% 60%;
+    --sidebar-border: 80 12% 18%;
+    --sidebar-ring: 73 60% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'EB Garamond', serif;
+    font-feature-settings: "ss01", "ss02";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Merriweather', serif;
+    @apply tracking-tight;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card/70 backdrop-blur-xl border border-white/40;
+    box-shadow: var(--shadow-card);
+  }
+
+  .gradient-border {
+    position: relative;
+  }
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--gradient-border);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .ambient-glow {
+    background-image: var(--gradient-glow);
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gradient-primary { background: var(--gradient-primary); }
+  .bg-gradient-soft { background: var(--gradient-soft); }
+  .bg-gradient-cream { background: var(--gradient-cream); }
+
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-card { box-shadow: var(--shadow-card); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .shadow-accent-glow { box-shadow: var(--shadow-accent-glow); }
+  .shadow-elegant { box-shadow: var(--shadow-elegant); }
+
+  .transition-smooth { transition: var(--transition-smooth); }
+  .transition-bounce { transition: var(--transition-bounce); }
+}
